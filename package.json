@@ -65,7 +65,7 @@
     "convert-source-map": "^2.0.0",
     "cookie": "^0.7.1",
     "cookie-signature": "^1.0.6",
-    "core-js": "^3.41.0",
+    "core-js": "^3.43.0",
     "core-js-compat": "^3.41.0",
     "core-util-is": "^1.0.3",
     "cross-spawn": "^7.0.6",
