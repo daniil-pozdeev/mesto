@@ -9,9 +9,9 @@ import { fetchUser, fetchCards, patchUser, postCard, patchProfile } from './api.
 const cardTemplate = document.querySelector('#card-template').content;
 
 const profilePopup = document.querySelector('.popup_type_edit');
-const profileAvatarPopup = document.querySelector('.popup_type_edit-avatar');
 const cardPopup = document.querySelector('.popup_type_new-card');
 const imagePopup = document.querySelector('.popup_type_image');
+const avatarPopup = document.querySelector('.popup_type_edit-avatar');
 
 profilePopup.classList.add('popup_is-animated');
 profileAvatarPopup.classList.add('popup_is-animated');
@@ -148,14 +148,24 @@ function refreshUser() {
 }
 
 function handleProfileFormSubmit(evt) {
-	evt.preventDefault();
-
-	const name = nameInput.value;
-	const job = jobInput.value;
-
-	updateUser(name, job);
-
-	closeModal(profilePopup);
+  evt.preventDefault();
+  const submitButton = evt.submitter;
+  const originalText = submitButton.textContent;
+  
+  submitButton.textContent = 'Сохранение...';
+  
+  patchUser(nameInput.value, jobInput.value)
+    .then(userData => {
+      profileNameElement.textContent = userData.name;
+      profileDescriptionElement.textContent = userData.about;
+      closeModal(profilePopup);
+    })
+    .catch(err => {
+      console.error('Ошибка при обновлении профиля:', err);
+    })
+    .finally(() => {
+      submitButton.textContent = originalText;
+    });
 }
 
 function handleProfileAvatarFormSubmit(evt) {

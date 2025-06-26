@@ -1,9 +1,9 @@
 const config = {
-	baseUrl: `${process.env.BASE_URL}${process.env.GROUP_ID}`,
-	headers: {
-		authorization: process.env.TOKEN,
-		'Content-Type': 'application/json'
-	}
+  baseUrl: 'https://mesto.nomoreparties.co/v1/apf-cohort-202',
+  headers: {
+    authorization: '4a4950d0-1132-4ce2-aad3-e01839933241',
+    'Content-Type': 'application/json'
+  }
 }
 
 

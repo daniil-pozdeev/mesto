@@ -47,8 +47,8 @@ export function createCard(template, card, userId, onClickCallback) {
 	});
 
 	if (card.owner._id !== userId) {
-		cardDeleteButtonElement.style.display = "none" // ID don't equate for some reason
-	}
+  cardDeleteButtonElement.style.display = "none";
+}
 
 	return cardElement;
 }
